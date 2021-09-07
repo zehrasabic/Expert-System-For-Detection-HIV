@@ -1,0 +1,49 @@
+[System]
+Name='FuzzyEkspertni'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='ulaz1'
+Range=[0 12]
+NumMFs=3
+MF1='AnaloziNukleozida':'trimf',[0 2.4 4.8]
+MF2='NenukleozidniAnalozi':'trapmf',[2.4 4.8 7.2 9.6]
+MF3='InhibitoriProteaze':'trimf',[7.2 9.6 12]
+
+[Input2]
+Name='ulaz2'
+Range=[0 60]
+NumMFs=3
+MF1='Niska':'trapmf',[0 0 12 18]
+MF2='Srednja':'trimf',[12 24 36]
+MF3='Visoka':'trapmf',[30 36 60 60]
+
+[Output1]
+Name='izlaz1'
+Range=[0 20]
+NumMFs=3
+MF1='AnaloziNukleozida':'trimf',[0 4 8]
+MF2='NenukleozidniAnalozi':'trapmf',[4 8 12 16]
+MF3='InhibitoriProteaze':'trimf',[12 16 20]
+
+[Output2]
+Name='izlaz2'
+Range=[0 100]
+NumMFs=3
+MF1='Niska':'trapmf',[0 0 20 30]
+MF2='Srednja':'trimf',[20 40 60]
+MF3='Visoka':'trapmf',[50 60 100 100]
+
+[Rules]
+1 1, 1 1 (1) : 1
+2 2, 2 2 (1) : 1
+3 3, 3 3 (1) : 1
